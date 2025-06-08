@@ -1,7 +1,10 @@
 <?php
-require_once 'libraries/database.php';
-class Article
+// require_once 'libraries/database.php';
+require_once 'libraries/models/Model.php';
+class Article extends Model
 {
+
+
     //tout les functions qui permet de manipuler les articles
 
     /**
@@ -10,8 +13,8 @@ class Article
      */
     public  function findAll(): array
     {
-        $pdo = getpdo();
-        $resultats = $pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
+        // $pdo = getpdo();
+        $resultats = $this->pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
         // On fouille le résultat pour en extraire les données réelles
         $articles = $resultats->fetchAll();
         return $articles;
@@ -19,8 +22,8 @@ class Article
 
     public function find($id)
     {
-        $pdo = getpdo();
-        $query = $pdo->prepare("SELECT * FROM articles WHERE id = :article_id");
+        // $pdo = getpdo();
+        $query = $this->pdo->prepare("SELECT * FROM articles WHERE id = :article_id");
 
         // On exécute la requête en précisant le paramètre :article_id 
         $query->execute(['article_id' => $id]);
@@ -34,8 +37,8 @@ class Article
 
   public  function delete($id)
     {
-        $pdo = getpdo();
-        $query = $pdo->prepare('DELETE FROM articles WHERE id = :id');
+        // $pdo = getpdo(); a ete remplacer par la function constructeur
+        $query = $this->pdo->prepare('DELETE FROM articles WHERE id = :id');
         $query->execute(['id' => $id]);
     }
 }
