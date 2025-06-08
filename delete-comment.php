@@ -26,7 +26,7 @@ $id = $_GET['id'];
  * 
  * PS : Vous remarquez que ce sont les mêmes lignes que pour l'index.php ?!
  */
-$pdo = getpdo();
+// $pdo = getpdo();
 
 /**
  * 3. Vérification de l'existence du commentaire
