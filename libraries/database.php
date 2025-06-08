@@ -10,3 +10,15 @@ function getpdo():PDO{
 ]);
 return $pdo;
 }
+
+/**
+ * Retourne la listedes articles de la database classes par date de creation
+ * @return @rray
+ */
+function findAllArticles():array{
+    $pdo=getpdo();
+    $resultats = $pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
+// On fouille le résultat pour en extraire les données réelles
+$articles = $resultats->fetchAll();
+return $articles;
+}
