@@ -4,7 +4,7 @@ require_once 'libraries/utils.php';
 require_once 'libraries/models/Article.php';
 $model=new Article();
 
-$articles =$model-> findAll();
+$articles =$model-> findAll("created_at DESC");
 
 $pageTitle = "Accueil";
 render('articles/index', compact('articles', 'pageTitle'));
