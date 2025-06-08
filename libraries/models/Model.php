@@ -1,6 +1,6 @@
 <?php
 require_once 'libraries/database.php';
-class Model
+abstract class Model //abstract veut dire que la classe ne peut pas etre extensier
 {
     protected $pdo;
     protected $table;
